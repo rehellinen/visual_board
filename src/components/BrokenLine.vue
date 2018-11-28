@@ -9,7 +9,7 @@ import {LineData} from "../d3/data"
 
 export default {
   mounted () {
-    new rehellinen.Lines().drawArea(LineData)
+    new rehellinen.Lines().draw(LineData)
   }
 }
 </script>

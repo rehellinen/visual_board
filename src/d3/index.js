@@ -3,7 +3,7 @@
  *  Create By rehellinen
  *  Create On 2018/11/28 14:35
  */
-import {Lines} from "./Lines"
+import {Line} from "./Line"
 
 window.rehellinen = {}
-window.rehellinen.Lines = Lines
+window.rehellinen.Lines = Line

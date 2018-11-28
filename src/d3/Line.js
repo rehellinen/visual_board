@@ -5,8 +5,9 @@
  */
 import * as d3 from 'd3'
 import {BaseChart} from "./BaseChart"
+import {Histogram} from "./Histogram"
 
-export class Lines extends BaseChart{
+export class Line extends BaseChart{
   constructor (conf) {
     const defaultConf = {
       width: 500,
@@ -15,13 +16,10 @@ export class Lines extends BaseChart{
       id: 'line'
     }
     super(defaultConf, conf)
-    // 主体折线的宽高
-    this.g_width = this.width - this.margin * 2
-    this.g_height = this.height - this.margin * 2
-    this.initSvg()
+    this.init()
   }
 
-  drawArea(data) {
+  draw (data) {
     this.data = data
     const g = this.svg.append('g')
     // 生成主折线
@@ -30,9 +28,16 @@ export class Lines extends BaseChart{
       .attr('transform', `translate(${this.margin}, ${this.margin})`)
       .style('fill', '#edf2fa')
       .style('stroke', '#487bca')
-      .style('stroke-width', '1px')
+      .style('stroke-width', '2px')
     // 生成坐标轴
     this.generateAxis(g)
+    // 利用柱状图生成顶部数字
+    new Histogram({
+      width: this.width,
+      height: this.height,
+      margin: this.margin,
+      id: this.id
+    }).drawValue(this.svg, data)
   }
 
   generateAxis (g) {
@@ -60,19 +65,9 @@ export class Lines extends BaseChart{
       .y(d => this.scaleY()(d))
   }
 
-  scaleX () {
-    return d3.scaleLinear()
-      .domain([0, this.data.length - 1])
-      .range([0, this.g_width])
-  }
-
-  scaleY () {
-    return d3.scaleLinear()
-      .domain([0, d3.max(this.data)])
-      .range([this.g_height, 0])
-  }
-
-  initSvg () {
+  init () {
+    this.g_width = this.width - this.margin * 2
+    this.g_height = this.height - this.margin * 2
     this.svg = d3.select(`#${this.id}`)
       .append('svg')
       .attr('width', this.width)
