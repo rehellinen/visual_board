@@ -1,21 +1,31 @@
 <template lang="pug">
-  .container
-    .broken-line
+  .line-container
+    #line
 
 </template>
 
 <script>
+import {LineData} from "../d3/data"
+
 export default {
+  mounted () {
+    new rehellinen.Lines().drawByData(LineData)
+  }
 }
 </script>
 
-<style scoped lang="sass" rel="stylesheet/sass">
-  .container
+<style lang="sass" rel="stylesheet/sass">
+  .line-container
     width: 80%
     margin-top: 10px
-  .broken-line
-    background-color: #ddd
-    width: 500px
-    height: 200px
-  .de
+    #line
+      background-color: white
+      width: 500px
+      height: 200px
+      border: 1px solid #e0e3ec
+  svg
+    #line-main
+      fill: none
+      stroke: #487bca
+      stroke-width: 2px
 </style>

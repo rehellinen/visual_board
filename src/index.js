@@ -5,6 +5,7 @@
  */
 import App from './App'
 import Vue from 'vue'
+import './d3'
 
 new Vue({
   el: '#app',
