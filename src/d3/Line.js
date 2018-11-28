@@ -12,7 +12,7 @@ export class Line extends BaseChart{
     const defaultConf = {
       width: 500,
       height: 200,
-      margin: 25,
+      margin: 30,
       id: 'line'
     }
     super(defaultConf, conf)
@@ -49,7 +49,7 @@ export class Line extends BaseChart{
       .attr('transform', `translate(${this.margin}, ${this.g_height + this.margin})`)
     g.append('g')
       .call(y_axis)
-      .attr('transform', `translate(${this.margin}, ${this.margin})`)
+      .attr('transform', `translate(${this.margin - 7}, ${this.margin})`)
   }
 
   areaGenerator () {
