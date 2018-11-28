@@ -4,10 +4,20 @@
  *  Create On 2018/11/28 14:34
  */
 import * as d3 from 'd3'
+import {BaseChart} from "./BaseChart"
 
-export class Lines {
+export class Lines extends BaseChart{
   constructor (conf) {
-    this.initConf(conf)
+    const defaultConf = {
+      width: 500,
+      height: 200,
+      margin: 25,
+      id: 'line'
+    }
+    super(defaultConf, conf)
+    // 主体折线的宽高
+    this.g_width = this.width - this.margin * 2
+    this.g_height = this.height - this.margin * 2
     this.initSvg()
   }
 
@@ -20,7 +30,7 @@ export class Lines {
       .attr('transform', `translate(${this.margin}, ${this.margin})`)
       .style('fill', '#edf2fa')
       .style('stroke', '#487bca')
-      .style('stroke-width', '2px')
+      .style('stroke-width', '1px')
     // 生成坐标轴
     this.generateAxis(g)
   }
@@ -67,27 +77,5 @@ export class Lines {
       .append('svg')
       .attr('width', this.width)
       .attr('height', this.height)
-  }
-
-  initConf (conf) {
-    // 默认配置
-    const defaultConf = {
-      width: 500,
-      height: 200,
-      margin: 30,
-      id: 'line'
-    }
-    Object.keys(defaultConf).forEach(key => {
-      this[key] = defaultConf[key]
-    })
-    // 遍历传进来的配置
-    if (conf) {
-      Object.keys(defaultConf).forEach(key => {
-        if (conf.hasOwnProperty(key)) this[key] = conf[key]
-      })
-    }
-    // 主体折线的宽高
-    this.g_width = this.width - this.margin * 2
-    this.g_height = this.height - this.margin * 2
   }
 }
