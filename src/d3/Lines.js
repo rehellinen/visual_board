@@ -11,14 +11,16 @@ export class Lines {
     this.initSvg()
   }
 
-  drawByData(data) {
+  drawArea(data) {
     this.data = data
     const g = this.svg.append('g')
     // 生成主折线
     g.append('path')
-      .attr('d', this.lineGenerator()(data))
+      .attr('d', this.areaGenerator()(data))
       .attr('transform', `translate(${this.margin}, ${this.margin})`)
-      .attr('id', 'line-main')
+      .style('fill', '#edf2fa')
+      .style('stroke', '#487bca')
+      .style('stroke-width', '2px')
     // 生成坐标轴
     this.generateAxis(g)
   }
@@ -29,10 +31,17 @@ export class Lines {
 
     g.append('g')
       .call(x_axis)
-      .attr('transform', `translate(${this.margin}, ${this.g_height + this.margin * 1.15})`)
+      .attr('transform', `translate(${this.margin}, ${this.g_height + this.margin})`)
     g.append('g')
       .call(y_axis)
-      .attr('transform', `translate(${this.margin * 0.85}, ${this.margin})`)
+      .attr('transform', `translate(${this.margin}, ${this.margin})`)
+  }
+
+  areaGenerator () {
+    return d3.area()
+      .x((d, i) => this.scaleX()(i))
+      .y0(this.g_height)
+      .y1(d => this.scaleY()(d))
   }
 
   lineGenerator () {

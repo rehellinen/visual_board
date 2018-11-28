@@ -9,7 +9,7 @@ import {LineData} from "../d3/data"
 
 export default {
   mounted () {
-    new rehellinen.Lines().drawByData(LineData)
+    new rehellinen.Lines().drawArea(LineData)
   }
 }
 </script>
@@ -23,9 +23,4 @@ export default {
       width: 500px
       height: 200px
       border: 1px solid #e0e3ec
-  svg
-    #line-main
-      fill: none
-      stroke: #487bca
-      stroke-width: 2px
 </style>
