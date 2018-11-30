@@ -5,7 +5,6 @@
  */
 const {resolve} = require('path')
 const webpack = require('webpack')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const r = path => resolve(__dirname, path)
@@ -24,16 +23,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-      },
-      {
         test: /\.js$/,
         loader: 'babel-loader'
       },
       {
         test: /\.pug$/,
-        loader: 'pug-plain-loader'
+        use: [
+          'html-loader',
+          'pug-plain-loader'
+        ]
       },
       {
         test: /\.sass$/,
@@ -57,7 +55,6 @@ module.exports = {
   },
 
   plugins: [
-    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html'
     })
