@@ -8,7 +8,7 @@ import {LineData} from "../d3/data"
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') { //当页面加载状态为完全结束时进入
     new rehellinen.Lines({
-      width: 600,
+      width: 700,
       height: 300,
       margin: 40
     }).draw(LineData)
