@@ -56,6 +56,7 @@ export class Line extends BaseChart{
     changeTable(title, content)
   }
 
+  // 生成坐标轴
   generateAxis (g) {
     const x_axis = d3.axisBottom(this.scaleX())
     const y_axis = d3.axisLeft(this.scaleY())
@@ -68,16 +69,18 @@ export class Line extends BaseChart{
       .attr('transform', `translate(${this.marginX - 7}, ${this.marginY})`)
   }
 
+  // 折线下方有阴影
   areaGenerator () {
     return d3.area()
-      .x((d, i) => this.scaleX()(i))
+      .x((d, i) => this.scaleX()(i + 1))
       .y0(this.g_height)
       .y1(d => this.scaleY()(d.y))
   }
 
+  // 单折线
   lineGenerator () {
     return d3.line()
-      .x((d, i) => this.scaleX()(i))
+      .x((d, i) => this.scaleX()(i + 1))
       .y((d, i) => this.scaleY()(d.y))
   }
 
@@ -90,6 +93,7 @@ export class Line extends BaseChart{
       .attr('height', this.height)
   }
 
+  // 设置相关dom的宽高
   initDom () {
     const panelHeight = 60
     const formHeight = 100

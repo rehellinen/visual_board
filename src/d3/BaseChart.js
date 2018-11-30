@@ -29,7 +29,7 @@ export class BaseChart {
 
   scaleX () {
     return d3.scaleLinear()
-      .domain([0, this.data.length - 1])
+      .domain([1, this.data.length])
       .range([0, this.g_width])
   }
 
