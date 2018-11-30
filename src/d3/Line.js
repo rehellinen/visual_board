@@ -6,7 +6,7 @@
 import * as d3 from 'd3'
 import {BaseChart} from "./BaseChart"
 import {Histogram} from "./Histogram"
-import {changeSizeByClass} from "../utils/dom"
+import {changeSizeByClass, changeTable} from "../utils/dom"
 
 export class Line extends BaseChart{
   constructor (conf) {
@@ -42,11 +42,23 @@ export class Line extends BaseChart{
       marginY: this.marginY,
       id: this.id
     }).drawValue(this.svg, data)
+    // 生成表格
+    this.drawForm()
+  }
+
+  drawForm () {
+    const title = []
+    const content = []
+    this.data.forEach(item => {
+      title.push(item.x)
+      content.push(item.y)
+    })
+    changeTable(title, content)
   }
 
   generateAxis (g) {
-    const x_axis = d3.axisBottom(this.scaleX(this.data))
-    const y_axis = d3.axisLeft(this.scaleY(this.data))
+    const x_axis = d3.axisBottom(this.scaleX())
+    const y_axis = d3.axisLeft(this.scaleY())
 
     g.append('g')
       .call(x_axis)

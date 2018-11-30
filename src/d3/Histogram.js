@@ -32,9 +32,9 @@ export class Histogram extends BaseChart{
       .attr('transform', (d, i) => `translate(${(this.perWidth + this.perMargin) * i + this.marginX}, ${this.marginY})`)
 
     bar.append('rect')
-      .attr('y', d => this.scaleY()(d))
+      .attr('y', d => this.scaleY()(d.y))
       .attr('width', this.perWidth)
-      .attr('height', d => this.g_height - this.scaleY()(d))
+      .attr('height', d => this.g_height - this.scaleY()(d.y))
       .style('fill', 'none')
 
     bar.append('text')
