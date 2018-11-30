@@ -13,7 +13,8 @@ export class Line extends BaseChart{
     const defaultConf = {
       width: 500,
       height: 200,
-      margin: 30,
+      marginX: 60,
+      marginY: 30,
       id: 'line'
     }
     super(defaultConf, conf)
@@ -27,7 +28,7 @@ export class Line extends BaseChart{
     // 生成主折线
     g.append('path')
       .attr('d', this.areaGenerator()(data))
-      .attr('transform', `translate(${this.margin}, ${this.margin})`)
+      .attr('transform', `translate(${this.marginX}, ${this.marginY})`)
       .style('fill', '#edf2fa')
       .style('stroke', '#487bca')
       .style('stroke-width', '2px')
@@ -37,7 +38,8 @@ export class Line extends BaseChart{
     new Histogram({
       width: this.width,
       height: this.height,
-      margin: this.margin,
+      marginX: this.marginX,
+      marginY: this.marginY,
       id: this.id
     }).drawValue(this.svg, data)
   }
@@ -48,28 +50,28 @@ export class Line extends BaseChart{
 
     g.append('g')
       .call(x_axis)
-      .attr('transform', `translate(${this.margin}, ${this.g_height + this.margin})`)
+      .attr('transform', `translate(${this.marginX}, ${this.g_height + this.marginY})`)
     g.append('g')
       .call(y_axis)
-      .attr('transform', `translate(${this.margin - 7}, ${this.margin})`)
+      .attr('transform', `translate(${this.marginX - 7}, ${this.marginY})`)
   }
 
   areaGenerator () {
     return d3.area()
       .x((d, i) => this.scaleX()(i))
       .y0(this.g_height)
-      .y1(d => this.scaleY()(d))
+      .y1(d => this.scaleY()(d.y))
   }
 
   lineGenerator () {
     return d3.line()
       .x((d, i) => this.scaleX()(i))
-      .y(d => this.scaleY()(d))
+      .y((d, i) => this.scaleY()(d.y))
   }
 
   init () {
-    this.g_width = this.width - this.margin * 2
-    this.g_height = this.height - this.margin * 2
+    this.g_width = this.width - this.marginX * 2
+    this.g_height = this.height - this.marginY * 2
     this.svg = d3.select(`#${this.id}`)
       .append('svg')
       .attr('width', this.width)

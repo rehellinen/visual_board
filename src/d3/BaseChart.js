@@ -4,6 +4,7 @@
  *  Create On 2018/11/28 21:51
  */
 import * as d3 from 'd3'
+import {findMax} from "../utils/utils"
 
 export class BaseChart {
   constructor(defaultConf, customConf) {
@@ -34,7 +35,7 @@ export class BaseChart {
 
   scaleY () {
     return d3.scaleLinear()
-      .domain([0, d3.max(this.data)])
+      .domain([0, findMax(this.data, 'y')])
       .range([this.g_height, 0])
   }
 }

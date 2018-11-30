@@ -11,7 +11,8 @@ export class Histogram extends BaseChart{
     const defaultConf = {
       width: 500,
       height: 200,
-      margin: 25,
+      marginX: 25,
+      marginY: 25,
       id: 'line'
     }
     super(defaultConf, conf)
@@ -28,7 +29,7 @@ export class Histogram extends BaseChart{
       .data(data)
       .enter()
       .append('g')
-      .attr('transform', (d, i) => `translate(${(this.perWidth + this.perMargin) * i + this.margin}, ${this.margin})`)
+      .attr('transform', (d, i) => `translate(${(this.perWidth + this.perMargin) * i + this.marginX}, ${this.marginY})`)
 
     bar.append('rect')
       .attr('y', d => this.scaleY()(d))
@@ -37,8 +38,8 @@ export class Histogram extends BaseChart{
       .style('fill', 'none')
 
     bar.append('text')
-      .text(d => d)
-      .attr('y', d => this.scaleY()(d) - 5)
+      .text(d => d.y)
+      .attr('y', d => this.scaleY()(d.y) - 15)
       .attr('text-anchor', 'middle')
   }
 
@@ -48,8 +49,8 @@ export class Histogram extends BaseChart{
   }
 
   init () {
-    this.g_width = this.width - this.margin * 2
-    this.g_height = this.height - this.margin * 2
+    this.g_width = this.width - this.marginX * 2
+    this.g_height = this.height - this.marginY * 2
     // this.svg = d3.select(`#${this.id}`)
     //   .append('svg')
     //   .attr('width', this.width)

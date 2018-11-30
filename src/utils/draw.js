@@ -10,7 +10,7 @@ document.onreadystatechange = () => {
     new rehellinen.Lines({
       width: 700,
       height: 300,
-      margin: 40
+      marginX: 55
     }).draw(LineData)
   }
 }
