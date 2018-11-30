@@ -6,6 +6,7 @@
 import * as d3 from 'd3'
 import {BaseChart} from "./BaseChart"
 import {Histogram} from "./Histogram"
+import {changeSizeByClass} from "../utils/dom"
 
 export class Line extends BaseChart{
   constructor (conf) {
@@ -17,6 +18,7 @@ export class Line extends BaseChart{
     }
     super(defaultConf, conf)
     this.init()
+    this.initDom()
   }
 
   draw (data) {
@@ -72,5 +74,14 @@ export class Line extends BaseChart{
       .append('svg')
       .attr('width', this.width)
       .attr('height', this.height)
+  }
+
+  initDom () {
+    const panelHeight = 60
+    const formHeight = 100
+
+    changeSizeByClass(`${this.id}-panel`, this.width, panelHeight)
+    changeSizeByClass(`${this.id}-container`, this.width, this.height + panelHeight + formHeight)
+    changeSizeByClass(`${this.id}-data`, this.width, formHeight)
   }
 }

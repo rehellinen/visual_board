@@ -50,9 +50,9 @@ export class Histogram extends BaseChart{
   init () {
     this.g_width = this.width - this.margin * 2
     this.g_height = this.height - this.margin * 2
-    this.svg = d3.select(`#${this.id}`)
-      .append('svg')
-      .attr('width', this.width)
-      .attr('height', this.height)
+    // this.svg = d3.select(`#${this.id}`)
+    //   .append('svg')
+    //   .attr('width', this.width)
+    //   .attr('height', this.height)
   }
 }
