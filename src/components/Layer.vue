@@ -1,47 +1,45 @@
 <template lang="pug">
   div.container
     // 上方四个图
-    el-row(:gutter="20")
-      el-col(:span="6")
-        div.up-four
-          histogram
-      el-col(:span="6")
-        div.up-four
-          p 123
-      el-col(:span="6")
-        div.up-four
-          p 123
-      el-col(:span="6")
-        div.up-four
-          p 123
-    el-row(:gutter="20")
-      // 表格以及大图
-      el-col(:span="18")
-        el-row
-          p 123
-        el-row
-          p 123
-      // 三个图
-      el-col(:span="6")
-        el-row
-          p 123
-        el-row
-          p 123
-        el-row
-          p 123
+    div.row
+      div.one
+        histogram(:id="1")
+      div.two
+        histogram(:id="2")
+      div.three
+        simple-card
+        simple-card
+        simple-card
+        simple-card
 </template>
 
 <script>
   import Histogram from './Histogram'
+  import SimpleCard from './SimpleCard'
+
   export default {
     components: {
-      Histogram
+      Histogram,
+      SimpleCard
     }
   }
 </script>
 
 <style lang="sass" scoped>
-  .up-four
-    /*height: 200px*/
+  .container
+    display: flex
+    flex-direction: column
+    min-width: 1300px
+  .row
+    display: flex
+    justify-content: space-around
+    .one
+      width: 500px
+    .two
+      width: 700px
+    .three
+      display: flex
+      flex-direction: column
+      justify-content: space-between
   .de
 </style>
