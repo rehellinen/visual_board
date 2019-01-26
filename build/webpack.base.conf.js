@@ -19,7 +19,10 @@ module.exports = {
     chunkFilename: "[name].chunk.js"
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json']
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'sass': resolve('../src/assets/sass')
+    }
   },
   module: {
     rules: [

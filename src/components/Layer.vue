@@ -36,7 +36,7 @@
     .one
       width: 500px
     .two
-      width: 700px
+      width: 650px
     .three
       display: flex
       flex-direction: column
