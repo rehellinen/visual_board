@@ -3,9 +3,10 @@
     // 上方四个图
     div.row
       div.one
-        histogram(:id="1")
+        histogram(title="每月产品产量折线图" :id="1")
       div.two
-        histogram(:id="2")
+        histogram(title="每月产品目标达成折线图"
+        width="600" :id="2")
       div.three
         simple-card(title="当日计划产量目标", content="9999")
         simple-card(title="当日实际产量", content="9999")

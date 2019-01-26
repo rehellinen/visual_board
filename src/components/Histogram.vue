@@ -3,8 +3,9 @@
     el-card
       div(slot="header" ref="title")
         span {{title}}
-      .line-container
-        div(:id="'line-' + id")
+      div.card-container
+        .line-container
+          div(:id="'line-' + id")
 </template>
 
 <script>
@@ -20,12 +21,17 @@
       title: {
         type: String,
         default: '标题'
-      }
+      },
+      width: {
+        type: Number,
+        default: 480
+      },
     },
     mounted () {
       (new Line({
         marginX: 50,
-        width: 450,
+        width: this.width,
+        height: 280,
         id: `line-${this.id}`
       })).draw(LineData)
     }
@@ -33,6 +39,12 @@
 </script>
 
 <style lang="sass" scoped>
+  .card-container
+    height: 300px
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: center
   .histogram
     height: 100%
   .el-card
