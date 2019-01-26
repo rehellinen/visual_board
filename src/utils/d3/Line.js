@@ -6,7 +6,7 @@
 import * as d3 from 'd3'
 import {BaseChart} from "./BaseChart"
 import {Histogram} from "./Histogram"
-import {changeSizeByClass, changeTable} from "../utils/dom"
+import {changeSizeByClass, changeTable} from "../dom"
 
 export class Line extends BaseChart{
   constructor (conf) {

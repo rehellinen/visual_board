@@ -3,11 +3,16 @@
  *  Create By rehellinen
  *  Create On 2018/11/28 10:24
  */
-import index from './template/index.pug'
-import './assets/css/reset.css'
-import './assets/sass/index.sass'
-import './d3/index'
+import Vue from 'vue'
+import App from './App'
+import 'element-ui/lib/theme-chalk/index.css'
+import {Button, Row, Col} from 'element-ui'
 
-const app = document.getElementById('app')
-app.innerHTML = index
-import './utils/draw'
+Vue.use(Button)
+Vue.use(Row)
+Vue.use(Col)
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
