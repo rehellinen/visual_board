@@ -4,7 +4,7 @@
     el-row(:gutter="20")
       el-col(:span="6")
         div.up-four
-          p 123
+          histogram
       el-col(:span="6")
         div.up-four
           p 123
@@ -32,13 +32,16 @@
 </template>
 
 <script>
-    export default {
-        name: "Layer"
+  import Histogram from './Histogram'
+  export default {
+    components: {
+      Histogram
     }
+  }
 </script>
 
 <style lang="sass" scoped>
   .up-four
-    height: 200px
+    /*height: 200px*/
   .de
 </style>

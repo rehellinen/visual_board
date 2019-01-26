@@ -4,7 +4,7 @@
  *  Create On 2018/11/28 21:51
  */
 import * as d3 from 'd3'
-import {findMax} from "../utils/utils"
+import {findMax} from "../utils"
 
 export class BaseChart {
   constructor(defaultConf, customConf) {

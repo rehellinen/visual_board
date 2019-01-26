@@ -6,11 +6,17 @@
 import Vue from 'vue'
 import App from './App'
 import 'element-ui/lib/theme-chalk/index.css'
-import {Button, Row, Col} from 'element-ui'
+import {
+  Button,
+  Row,
+  Col,
+  Card
+} from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Row)
 Vue.use(Col)
+Vue.use(Card)
 
 new Vue({
   el: '#app',

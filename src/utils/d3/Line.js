@@ -19,7 +19,6 @@ export class Line extends BaseChart{
     }
     super(defaultConf, conf)
     this.init()
-    this.initDom()
   }
 
   draw (data) {
@@ -91,15 +90,5 @@ export class Line extends BaseChart{
       .append('svg')
       .attr('width', this.width)
       .attr('height', this.height)
-  }
-
-  // 设置相关dom的宽高
-  initDom () {
-    const panelHeight = 60
-    const formHeight = 100
-
-    changeSizeByClass(`${this.id}-panel`, this.width, panelHeight)
-    changeSizeByClass(`${this.id}-container`, this.width, this.height + panelHeight + formHeight)
-    changeSizeByClass(`${this.id}-data`, this.width, formHeight)
   }
 }
