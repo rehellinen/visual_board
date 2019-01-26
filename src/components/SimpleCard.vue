@@ -1,7 +1,8 @@
 <template lang="pug">
-  el-card
-    p.title {{title}}
-    p.content {{content}}
+  el-card(:body-style="cardStyle")
+    div.card-container
+      p.title {{content}}
+      p.content {{title}}
 </template>
 
 <script>
@@ -15,21 +16,32 @@
         type: String,
         default: '这是内容'
       }
+    },
+    data () {
+      return {
+        cardStyle: {
+          padding: '5px'
+        }
+      }
     }
   }
 </script>
 
 <style lang="sass" scoped>
   @import "../assets/sass/base"
-  .el-card
+  .card-container
     display: flex
+    flex-direction: column
     align-items: center
     justify-content: center
-    width: 100px
-    height: 90px
+    width: 100%
+    height: 80px
+    p
+      margin: 5px
     .title
       color: $main-font-color
-      font-size: $big-font-size
+      font-size: $bigger-font-size
+      width: 50px
     .content
       color: $minor-font-color
       font-size: $normal-font-size

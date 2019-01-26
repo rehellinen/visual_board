@@ -7,10 +7,10 @@
       div.two
         histogram(:id="2")
       div.three
-        simple-card
-        simple-card
-        simple-card
-        simple-card
+        simple-card(title="当日计划产量目标", content="9999")
+        simple-card(title="当日实际产量", content="9999")
+        simple-card(title="当月计划产量目标", content="9999")
+        simple-card(title="当月实际产量", content="9999")
 </template>
 
 <script>
