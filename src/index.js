@@ -10,13 +10,17 @@ import {
   Button,
   Row,
   Col,
-  Card
+  Card,
+  Steps,
+  Step
 } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Row)
 Vue.use(Col)
 Vue.use(Card)
+Vue.use(Steps)
+Vue.use(Step)
 
 new Vue({
   el: '#app',
