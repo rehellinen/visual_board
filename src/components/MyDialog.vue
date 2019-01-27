@@ -2,41 +2,53 @@
   div(v-show="dialogVisible")
     el-dialog(:title="title" :visible.sync="dialogVisible"
     @close="closeDialog" width="1100px")
-      el-row
+      el-row(:gutter="20")
         el-col(:span="12")
-          el-row(:gutter="20")
+          el-row(:gutter="10")
             el-col(:span="8")
-              input-with-label(title="产品编号")
+              my-input(title="产品编号")
             el-col(:span="8")
-              input-with-label(title="产品名称")
+              my-input(title="产品名称")
             el-col(:span="8")
-              input-with-label(title="规格型号")
-          el-row(:gutter="20")
+              my-input(title="规格型号")
+          el-row(:gutter="10")
             el-col(:span="8")
-              input-with-label(title="产品数量")
+              my-input(title="产品数量")
             el-col(:span="8")
-              input-with-label(title="累计数量")
+              my-input(title="累计数量")
             el-col(:span="8")
-              input-with-label(title="取数时间")
-          el-row
+              my-input(title="取数时间")
+          el-row(:gutter="10")
             el-col(:span="8")
-              input-with-label(title="累计运行")
+              my-input(title="累计运行")
             el-col(:span="16")
-              input-with-label(title="备注")
+              my-input(title="备注")
         el-col(:span="12")
-      el-row
+          my-table(:data="gridData")
+      el-row(:gutter="30")
         el-col(:span="12")
+          my-table(:data="gridData")
         el-col(:span="12")
+          my-table(:data="gridData")
     div
 </template>
 
 <script>
-  import InputWithLabel from './InputWithLabel'
-
+  import MyInput from './MyInput'
+  import MyTable from './MyTable'
   export default {
     data () {
       return{
-        dialogVisible: false
+        dialogVisible: false,
+        gridData: [{
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }]
       }
     },
     watch: {
@@ -60,7 +72,8 @@
       }
     },
     components: {
-      InputWithLabel
+      MyInput,
+      MyTable
     }
   }
 </script>
