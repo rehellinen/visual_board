@@ -1,74 +1,50 @@
 <template lang="pug">
   el-card
-    div.container
-      div.row
+    .container
+      .row
         machine(title="自动包装机" :info="info")
-        .arrow-container
-          .arrow.arrow-left
-          .line
+        arrow(direction="left")
         machine(title="自动喷漆室" :info="info")
-        .arrow-container
-          .arrow.arrow-left
-          .line
+        arrow(direction="left")
         machine(title="自动打滑机" :info="info")
-        .arrow-container
-          .arrow.arrow-left
-          .line
+        arrow(direction="left")
         machine(title="辊道抛丸机" :info="info" :danger="true")
 
       .row
         .placeholder
 
-      div.row
-
+      .row
         machine(title="1台电磁吊" :info="info" :danger="true")
         .placeholder
         .placeholder
         .placeholder
         machine(title="2台混砂机" :info="info" :danger="true")
         .placeholder
-        .down-arrow-container
-          .arrow.up-arrow
-          .line
+        arrow(direction="up")
+
 
       .row
-        .down-arrow-container
-          .line
-          .arrow
+        arrow(direction="down")
         .placeholder
         .placeholder
         .placeholder
-        .down-arrow-container
-          .line
-          .arrow
+        arrow(direction="down")
         .placeholder
-        .down-arrow-container
-          .arrow.up-arrow
-          .line
+        arrow(direction="up")
 
-      div.row
+      .row
         machine(title="4台加料车" :info="info")
         .placeholder
         machine(title="1台保温浇筑炉" :info="info")
-        .arrow-container
-          .line
-          .arrow
+        arrow(direction="right")
         machine(title="1台静压造型机" :info="info")
-        .arrow-container
-          .line
-          .arrow
-        .arrow-container
-          .line
-          .arrow
+        arrow(direction="right")
+        arrow(direction="right")
 
       .row
-        .down-arrow-container
-          .line
-          .arrow
+        arrow(direction="down")
         .placeholder
-        .down-arrow-container
-          .arrow.up-arrow
-          .line
+        arrow(direction="up")
         .placeholder
         .placeholder
         .placeholder
@@ -76,9 +52,7 @@
 
       div.row
         machine(title="4台电炉" :info="info")
-        .arrow-container
-          .line
-          .arrow
+        arrow(direction="right")
         machine(title="1台铁水转运车" :info="info")
         .placeholder
         .placeholder
@@ -89,6 +63,8 @@
 
 <script>
   import Machine from './Machine'
+  import Arrow from './Arrow'
+
   export default {
     data () {
       return {
@@ -100,7 +76,8 @@
       }
     },
     components: {
-      Machine
+      Machine,
+      Arrow
     }
   }
 </script>
@@ -114,42 +91,6 @@
     display: flex
     justify-content: space-around
     align-items: center
-  .down-arrow-container
-    width: 130px
-    height: 85px
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    .line
-      background-color: black
-      width: 1px
-      height: 40px
-    .arrow
-      width: 10px
-      height: 10px
-      border-top: 1px solid black
-      border-right: 1px solid black
-      transform: rotate(135deg)
-    .arrow.up-arrow
-      transform: rotate(-45deg)
-
-  .arrow-container
-    width: 130px
-    display: flex
-    align-items: center
-    .line
-      background-color: black
-      width: 80px
-      height: 1px
-    .arrow
-      width: 10px
-      height: 10px
-      border-top: 1px solid black
-      border-right: 1px solid black
-      transform: rotate(45deg)
-    .arrow.arrow-left
-      transform: rotate(-135deg)
   .placeholder
     width: 130px
     height: 30px
