@@ -14,7 +14,7 @@
   .header-container
     display: flex
     align-items: baseline
-    margin-bottom: 25px
+    margin-bottom: 40px
     background-color: $blue-color
     width: 100%
     height: 85px

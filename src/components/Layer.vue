@@ -2,7 +2,6 @@
   div.wrapper
     my-header
     div.container
-      step
       div.row
         div.one
           histogram(title="每月产品产量折线图" :id="1")
@@ -14,6 +13,7 @@
           simple-card(title="当日实际产量", content="9999")
           simple-card(title="当月计划产量目标", content="9999")
           simple-card(title="当月实际产量", content="9999")
+      step
 </template>
 
 <script>
@@ -46,7 +46,7 @@
   .row
     display: flex
     justify-content: space-between
-    margin-top: 20px
+    margin-bottom: 40px
     .one
       width: 500px
     .two
