@@ -1,8 +1,8 @@
 <template lang="pug">
   div.wrapper
+    my-header
     div.container
-      div
-        step
+      step
       div.row
         div.one
           histogram(title="每月产品产量折线图" :id="1")
@@ -20,12 +20,14 @@
   import Histogram from './Histogram'
   import SimpleCard from './SimpleCard'
   import Step from './Step'
+  import MyHeader from './MyHeader'
 
   export default {
     components: {
       Histogram,
       SimpleCard,
-      Step
+      Step,
+      MyHeader
     }
   }
 </script>
@@ -33,7 +35,9 @@
 <style lang="sass" scoped>
   .wrapper
     display: flex
-    justify-content: center
+    flex-direction: column
+    align-items: center
+    background-color: #f9f9f9
   .container
     display: flex
     flex-direction: column
