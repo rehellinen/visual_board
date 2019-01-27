@@ -1,13 +1,22 @@
 <template lang="pug">
-  .machine(:class="{danger, down}")
-    p.title {{title}}
-    p {{info.product}}
-    p {{info.status}}
-    p {{info.team}}
+  .wrapper(:class="{danger, down}")
+    my-dialog(:visible="dialogVisible"
+    :title="title" @close="dialogClose")
+    .machine(@click="openDialog")
+        p.title {{title}}
+        p {{info.product}}
+        p {{info.status}}
+        p {{info.team}}
 </template>
 
 <script>
+  import MyDialog from './MyDialog'
   export default {
+    data () {
+      return {
+        dialogVisible: false
+      }
+    },
     props: {
       title: {
         type: String,
@@ -25,25 +34,37 @@
         type: Boolean,
         default: false
       }
+    },
+    methods: {
+      openDialog () {
+        this.dialogVisible = true
+      },
+      dialogClose () {
+        this.dialogVisible = false
+      }
+    },
+    components: {
+      MyDialog
     }
   }
 </script>
 
 <style lang="sass" scoped>
   @import "../assets/sass/base"
-  .machine.danger
+  .wrapper
+    background-color: $success-color
+    border-radius: 5px
+  .wrapper.danger
     background-color: $danger-color
-  .machine.down
+  .wrapper.down
     background-color: $minor-font-color
   .machine
     display: flex
     flex-direction: column
     align-items: center
     width: 130px
-    border: 1px solid $border-one
     border-radius: 5px
     padding: 10px 0
-    background-color: $success-color
     .title
       font-size: $bigger-font-size
       padding-bottom: 10px
