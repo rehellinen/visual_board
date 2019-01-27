@@ -1,5 +1,5 @@
 <template lang="pug">
-  .machine(:class="{danger}")
+  .machine(:class="{danger, down}")
     p.title {{title}}
     p {{info.product}}
     p {{info.status}}
@@ -20,6 +20,10 @@
       danger: {
         type: Boolean,
         default: false
+      },
+      down: {
+        type: Boolean,
+        default: false
       }
     }
   }
@@ -28,6 +32,8 @@
 <style lang="sass" scoped>
   @import "../assets/sass/base"
   .machine.danger
+    background-color: $danger-color
+  .machine.down
     background-color: $minor-font-color
   .machine
     display: flex
@@ -43,7 +49,7 @@
       padding-bottom: 10px
       color: white
     p
-      font-size: $big-font-size
+      font-size: $normal-font-size
       margin: 2px
       color: $border-one
 </style>

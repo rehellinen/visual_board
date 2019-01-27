@@ -52,7 +52,7 @@
     .line
       background-color: black
       width: 1px
-      height: 40px
+      height: 35px
     .arrow
       width: 10px
       height: 10px

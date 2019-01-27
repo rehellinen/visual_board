@@ -4,7 +4,7 @@
       .row
         machine(title="自动包装机" :info="info")
         arrow(direction="left")
-        machine(title="自动喷漆室" :info="info")
+        machine(title="自动喷漆室" :info="info" :down="true")
         arrow(direction="left")
         machine(title="自动打滑机" :info="info")
         arrow(direction="left")
@@ -51,7 +51,7 @@
         .placeholder
 
       div.row
-        machine(title="4台电炉" :info="info")
+        machine(title="4台电炉" :info="info" :down="true")
         arrow(direction="right")
         machine(title="1台铁水转运车" :info="info")
         .placeholder
