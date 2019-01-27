@@ -11,7 +11,10 @@ import {
   Row,
   Col,
   Card,
-  Dialog
+  Dialog,
+  Form,
+  FormItem,
+  Input
 } from 'element-ui'
 
 Vue.use(Button)
@@ -19,6 +22,9 @@ Vue.use(Row)
 Vue.use(Col)
 Vue.use(Card)
 Vue.use(Dialog)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
 
 
 new Vue({
