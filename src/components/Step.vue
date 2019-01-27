@@ -2,35 +2,30 @@
   el-card
     div.container
       div.row
-        .machine
-          p 自动包装机
+        machine(title="自动包装机" :info="info")
         .arrow-container
           .arrow.arrow-left
           .line
-        .machine
-          p 自动喷漆室
+        machine(title="自动喷漆室" :info="info")
         .arrow-container
           .arrow.arrow-left
           .line
-        .machine
-          p 自动打滑机
+        machine(title="自动打滑机" :info="info")
         .arrow-container
           .arrow.arrow-left
           .line
-        .machine
-          p 辊道抛丸机
+        machine(title="辊道抛丸机" :info="info" :danger="true")
 
       .row
         .placeholder
 
       div.row
-        div.machine
-          p 1台电磁吊
+
+        machine(title="1台电磁吊" :info="info" :danger="true")
         .placeholder
         .placeholder
         .placeholder
-        div.machine
-          p 2台混砂机
+        machine(title="2台混砂机" :info="info" :danger="true")
         .placeholder
         .down-arrow-container
           .arrow.up-arrow
@@ -52,16 +47,13 @@
           .line
 
       div.row
-        div.machine
-          p 4台加料车
+        machine(title="4台加料车" :info="info")
         .placeholder
-        div.machine
-          p 1台保温浇筑炉
+        machine(title="1台保温浇筑炉" :info="info")
         .arrow-container
           .line
           .arrow
-        div.machine
-          p 1台静压造型机
+        machine(title="1台静压造型机" :info="info")
         .arrow-container
           .line
           .arrow
@@ -83,13 +75,11 @@
         .placeholder
 
       div.row
-        div.machine
-          p 4台电炉
+        machine(title="4台电炉" :info="info")
         .arrow-container
           .line
           .arrow
-        div.machine
-          p 1台铁水转运车
+        machine(title="1台铁水转运车" :info="info")
         .placeholder
         .placeholder
         .placeholder
@@ -98,7 +88,20 @@
 </template>
 
 <script>
+  import Machine from './Machine'
   export default {
+    data () {
+      return {
+        info: {
+          product: '#9527#',
+          status: '开',
+          team: '#9527#'
+        }
+      }
+    },
+    components: {
+      Machine
+    }
   }
 </script>
 
@@ -147,13 +150,6 @@
       transform: rotate(45deg)
     .arrow.arrow-left
       transform: rotate(-135deg)
-  .machine
-    display: flex
-    flex-direction: column
-    align-items: center
-    width: 130px
-    border: 1px solid $border-one
-    border-radius: 5px
   .placeholder
     width: 130px
     height: 30px
